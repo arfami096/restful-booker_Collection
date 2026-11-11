@@ -1,0 +1,3 @@
+firstname,lastname,totalprice,depositpaid,checkin,checkout,additionalneeds
+Ivan,Petrov,100,true,2026-07-01,2026-08-01,Breakfast
+Anna,Sidorova,250,false,2026-09-01,2026-09-10,Dinner
