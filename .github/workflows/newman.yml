@@ -1,0 +1,15 @@
+name: API tests
+on: [push, pull_request]
+jobs:
+  newman:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - name: CRUD
+        run: npx newman run Restful-booker.postman_collection.json -e Restful-booker.postman_environment.json --env-var "baseURL=https://restful-booker.herokuapp.com/" --folder Authorization --folder Booking_CRUD
+      - name: Data-driven
+        run: npx newman run Restful-booker.postman_collection.json -e Restful-booker.postman_environment.json --env-var "baseURL=https://restful-booker.herokuapp.com/" -d data.csv --folder Lesson2_dataDriven
